@@ -23,7 +23,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });*/
 
 
-//ETUDIANT ROUTAGE
+//Lnaguage change
+Route::post('/language', 'LangueController@index')->name('language');
 
 Route::group(['middleware' => 'auth'], function () {
    //home
@@ -38,3 +39,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/etudiants/update/{id}', 'EtudiantController@update')->name('updateEtudiant')->where('id','[0-9]+');
     Route::get('/etudiants/delete/{id}', 'EtudiantController@delete')->name('deleteEtudiant')->where('id','[0-9]+');
 });
+
+

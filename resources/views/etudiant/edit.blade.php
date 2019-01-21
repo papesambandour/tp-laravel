@@ -4,7 +4,7 @@
 @extends('layout-admin')
 
 @section('title')
-    Editer etudiant
+    {{trans('etudiant.title_update')}}
 @endsection
 @section('css')
 
@@ -20,18 +20,18 @@
 
                     <form class="forms-sample" action="{{url('/etudiants/update').'/'.$etudiant->id}}" method="post">
                         <div class="form-group">
-                            <label for="nom">Nom</label>
+                            <label for="nom">{{trans('etudiant.l_name')}}</label>
                             <input type="hidden" name="id" id="id">
-                            <input type="text" class="form-control" id="nom" name="nom" value="{{$etudiant->nom}}" placeholder="Nom">
+                            <input type="text" class="form-control" id="nom" name="nom" value="{{$etudiant->nom}}" placeholder="{{trans('etudiant.l_name')}}">
 
                         </div>
                         <div class="form-group">
-                            <label for="prenom">Prenom</label>
-                            <input type="text" class="form-control" value="{{$etudiant->prenom}}"  id="prenom" name="prenom" placeholder="Prenom">
+                            <label for="prenom">{{trans('etudiant.f_name')}}</label>
+                            <input type="text" class="form-control" value="{{$etudiant->prenom}}"  id="prenom" name="prenom" placeholder="{{trans('etudiant.f_name')}}">
                         </div>
 
-                        <button type="submit" class="btn btn-gradient-primary mr-2">Editer</button>
-                        <a  class="btn btn-light" href="{{url('/etudiants/list')}}">Annuler</a>
+                        <button type="submit" class="btn btn-gradient-primary mr-2">{{trans('commun.edit')}}</button>
+                        <a  class="btn btn-light" href="{{url('/etudiants/list')}}">{{trans('commun.cancel')}}</a>
                     </form>
                 </div>
             </div>

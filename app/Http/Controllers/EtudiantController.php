@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Etudiant;
+use App\Http\Requests\EtudiantRequest;
 use Collective\Html\FormFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -18,6 +19,12 @@ class EtudiantController extends Controller
         return view('etudiant/list',compact(['etudiants','add','edit','delete']));
     }
     public function save(Request $request){
+        $eduReq = new EtudiantRequest();
+        $validator =  validator($request->all(),$eduReq->rules());
+        if($validator->fails())
+        {
+            return redirect('/etudiants/add')->withErrors($validator->errors());
+        }
 
         $etudiant = Etudiant::create($request->all());
      return   redirect('/etudiants/list?add=1');
@@ -47,6 +54,8 @@ class EtudiantController extends Controller
 
     }
     public function update($id,Request $request){
+      //  $validaor = EtudiantRequest::va
+
         $etudiant = Etudiant::findOrFail($id);
         $etudiant->nom = $request->input('nom');
         $etudiant->prenom = $request->input('prenom');

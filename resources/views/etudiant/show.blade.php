@@ -4,7 +4,7 @@
 @extends('layout-admin')
 
 @section('title')
-    African Softwares | ADMIN
+    {{trans('etudiant.title_details')}}
 @endsection
 @section('css')
 
@@ -35,7 +35,7 @@
                         </tr>
                         </tbody>
                         <tfoot>
-                        <a class="btn btn-primary btn-xs" href="{{url('/etudiants/list')}}">Retourner sur la liste</a>
+                        <a class="btn btn-primary btn-xs" href="{{url('/etudiants/list')}}">{{trans('etudiant.gobacklist')}}</a>
                         </tfoot>
                     </table>
                 </div>

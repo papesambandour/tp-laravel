@@ -24,16 +24,16 @@
                 <div class="col-lg-4 mx-auto">
                     <div class="auth-form-light text-left p-5">
                         <div class="brand-logo text-success" style="font-size: 18px;font-weight: bold">
-                            Gestion Universite
+                            {{trans('commun.titleproject')}}
                         </div>
-                        <h4>Salut! Commençons</h4>
-                        <h6 class="font-weight-light">Connectez-vous pour continuer.</h6>
+                        <h4>{{trans('commun.msg_start')}}</h4>
+                        <h6 class="font-weight-light">{{trans('commun.msg_connected')}}</h6>
                         <form class="pt-3" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
 
-                               {{-- <input type="email"  id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} form-control-lg" name="email" placeholder="Adresse email" value="{{ old('email') }}" required autofocus>--}}
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{trans('commun.mail')}}" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -41,7 +41,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input id="password"  type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg" name="password" placeholder="Mot de passe" value="">
+                                <input id="password"  type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg"  name="password" placeholder="{{trans('commun.password')}}" value="">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -50,21 +50,31 @@
                                 @endif
                             </div>
                             <div class="mt-3">
-                                <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">Connexion</button>
+                                <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">{{trans('commun.connexion')}}</button>
                             </div>
                             <div class="my-2 d-flex justify-content-between align-items-center">
                                 <div class="form-check">
                                     <label class="form-check-label text-muted">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        {{ __('Remember Me') }}
+                                        {{ trans('commun.remember') }}
                                         <i class="input-helper"></i></label>
                                 </div>
 
                                 @if (Route::has('password.request'))
                                     <a class="auth-link text-black" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ trans('commun.passwordlost')}}
                                     </a>
                                 @endif
+                                <br>
+
+                            </div>
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <a class="auth-link text-black" href="{{ route('register') }}">
+                                        {{ trans('commun.register')}}
+                                    </a>
+                                </div>
+
                             </div>
 
                         </form>
